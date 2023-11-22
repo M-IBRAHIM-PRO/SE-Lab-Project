@@ -1,3 +1,4 @@
+const expressAsyncHandler = require('expressAsyncHandler');
 const User = require ('../model/users')
 
 const adduser = async (req,res) => {
@@ -17,6 +18,16 @@ const adduser = async (req,res) => {
     }
 }
 
+
+const fetchUser =expressAsyncHandler(async (req, res) => {
+try {
+    const user = await User.findOne({});
+    res.json(user);
+} catch (error) {
+    res.json(error);
+}
+});
+
 module.exports = {
-    adduser
+    adduser ,fetchUser
 };

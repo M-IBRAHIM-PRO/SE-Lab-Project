@@ -1,7 +1,7 @@
 const express = require('express');
-const router = express.Router();
-const userscontroller = require('../controllers/Usercontroller');
-//const budgetcontroller = require('../controllers/budgetcontroller');
-router.post('/addusers',userscontroller.adduser);
+const routes = express.Router();
+const {userscontroller ,fetchUser} = require('../controllers/Usercontroller');
 
-module.exports = router;
+routes.post('/addusers',userscontroller.adduser);
+routes.get('/',fetchUser);
+module.exports = routes;
