@@ -1,19 +1,20 @@
 
 const income = require('../model/Income');
+const expense = require('../model/expense');
 
-//create 
+//create expense
 
-const createincome = async(req ,res) =>
+const create_expense = async(req ,res) =>
 {
     const {title , amount , description ,user} = req.body;
     try {
-        const income = await income.create({
+        const expense = await expense.create({
             title,
             amount,
             description,
             user,
         });
-        res.json(income);
+        res.json(expense);
     } catch (error) {
         res.json(error);
     }
@@ -21,39 +22,39 @@ const createincome = async(req ,res) =>
 
 
 
-//Fetch all income
+//Fetch all expense
 
-const fetchincome = async(req ,res) =>
+const fetch_expense =async(req ,res) =>
 {
     try {
-        const income = await income.find();
-        res.json(income);
+        const expense = await expense.find();
+        res.json(expense);
     } catch (error) {
         res.json(error);
     }
 };
 
 // fetch a single id
-const fetch_one_income = async(req ,res) =>
+const fetch_one_expense = async(req ,res) =>
 {
     const { id } = req?.params;
     try {
-        const income = await income.findById(id);
-        res.json(income);
+        const expense = await expense.findById(id);
+        res.json(expense);
     } catch (error) {
         res.json(error);
     }
 };
 
 
-//update income
+//update expense
 
-const update_income = async(req ,res) =>
+const update_expense = async(req ,res) =>
 {
     const { id } = req?.params;
     const {title , amount , description} = req.body;
     try {
-        const income = await income.findByIdAndUpdate(
+        const expense = await expense.findByIdAndUpdate(
             id,
             {
                 title,
@@ -62,7 +63,7 @@ const update_income = async(req ,res) =>
             },
                { new : true}
         );
-        res.json(income);
+        res.json(expense);
     } catch (error) {
         res.json(error);
     }
@@ -70,17 +71,17 @@ const update_income = async(req ,res) =>
 
 
 // delete a single id
-const delete_income = async(req ,res) =>
+const delete_expense = async(req ,res) =>
 {
     const { id } = req?.params;
     try {
-        const income = await income.findByIdAndDelete(id);
-        res.json(income);
+        const expense = await expense.findByIdAndDelete(id);
+        res.json(expense);
     } catch (error) {
         res.json(error);
     }
 };
 
 module.exports = {
-    createincome,fetchincome,fetch_one_income,update_income,delete_income
+    create_expense,fetch_expense,fetch_one_expense,update_expense,delete_expense
 };
