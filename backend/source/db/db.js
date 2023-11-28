@@ -6,13 +6,6 @@ mongoose.connect(dbUrl);
 
 const dbConnect = async () => {
     try {
-        // await dbConnect("open",{
-        //     // useCreateIndex : true,
-        //     // useFindAndModify: false,
-        //     // useUnifiedTopology:true,
-        //     // useNewUrlParse:true,
-        // //    console.log(`DB Connect Successfully`);
-        // });
         console.log(`DB Connect Successfully`);
 
     } catch (error) {
